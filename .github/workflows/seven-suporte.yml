@@ -1,0 +1,15 @@
+name: SevenAutomation Suporte Remoto build
+
+on:
+  push:
+    branches:
+      - seven-automation-branding
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/flutter-build.yml
+    secrets: inherit
+    with:
+      upload-artifact: true
+      upload-tag: "seven-suporte"
