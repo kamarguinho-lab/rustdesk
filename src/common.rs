@@ -2514,6 +2514,11 @@ pub fn load_custom_client() {
     }
 }
 
+#[cfg(target_os = "android")]
+pub fn apply_build_branding() {
+    *config::APP_NAME.write().unwrap() = "SevenAutomation".to_owned();
+}
+
 fn read_custom_client_advanced_settings(
     settings: serde_json::Value,
     map_display_settings: &HashMap<String, &&str>,

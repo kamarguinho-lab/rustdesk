@@ -911,19 +911,40 @@ showInputWarnAlert(FFI ffi) {
       close();
     }
 
+    final pt = Localizations.localeOf(context).languageCode == 'pt';
+    final disclosure = pt
+        ? [
+            'Permitir controle remoto pelo técnico',
+            'Para que um técnico da Seven Automation possa tocar, deslizar e digitar no seu aparelho durante o atendimento, este app usa o Serviço de Acessibilidade do Android.',
+            '• Só funciona durante uma sessão que você iniciou e aprovou.\n• Não lê suas mensagens, senhas nem coleta dados pessoais.\n• Fica desligado quando não há atendimento.\n• Você pode desativar a qualquer momento nas configurações.',
+            'Sem esta permissão, o técnico só consegue ver sua tela.',
+            'Recusar',
+            'Aceitar e continuar',
+          ]
+        : [
+            'Allow remote control by the technician',
+            'So that a Seven Automation technician can tap, swipe and type on your device during support, this app uses Android\'s Accessibility Service.',
+            '• It only works during a session that you started and approved.\n• It does not read your messages or passwords, or collect personal data.\n• It is off when no support session is running.\n• You can turn it off at any time in Settings.',
+            'Without this permission, the technician can only view your screen.',
+            'Decline',
+            'Accept and continue',
+          ];
     return CustomAlertDialog(
-      title: Text(translate("How to get Android input permission?")),
+      title: Text(disclosure[0]),
       content: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(translate("android_input_permission_tip1")),
+          Text(disclosure[1]),
           const SizedBox(height: 10),
-          Text(translate("android_input_permission_tip2")),
+          Text(disclosure[2]),
+          const SizedBox(height: 10),
+          Text(disclosure[3]),
         ],
       ),
       actions: [
-        dialogButton("Cancel", onPressed: close, isOutline: true),
-        dialogButton("Open System Setting", onPressed: submit),
+        dialogButton(disclosure[4], onPressed: close, isOutline: true),
+        dialogButton(disclosure[5], onPressed: submit),
       ],
       onSubmit: submit,
       onCancel: close,
