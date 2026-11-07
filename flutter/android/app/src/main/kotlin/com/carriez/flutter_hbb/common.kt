@@ -94,7 +94,32 @@ fun requestPermission(context: Context, type: String) {
         }
 }
 
+fun openInputServiceToggle(context: Context): Boolean {
+    val component = android.content.ComponentName(context, InputService::class.java).flattenToString()
+    val intent = if (Build.VERSION.SDK_INT >= 33) {
+        Intent("android.settings.ACCESSIBILITY_DETAILS_SETTINGS").apply {
+            putExtra(Intent.EXTRA_COMPONENT_NAME, component)
+        }
+    } else {
+        Intent(ACTION_ACCESSIBILITY_SETTINGS).apply {
+            val args = android.os.Bundle().apply { putString(":settings:fragment_args_key", component) }
+            putExtra(":settings:fragment_args_key", component)
+            putExtra(":settings:show_fragment_args", args)
+        }
+    }
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    return try {
+        context.startActivity(intent)
+        true
+    } catch (e: Exception) {
+        false
+    }
+}
+
 fun startAction(context: Context, action: String) {
+    if (ACTION_ACCESSIBILITY_SETTINGS == action && openInputServiceToggle(context)) {
+        return
+    }
     try {
         context.startActivity(Intent(action).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

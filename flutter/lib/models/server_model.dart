@@ -917,7 +917,7 @@ showInputWarnAlert(FFI ffi) {
             'Permitir controle remoto pelo técnico',
             'Para que um técnico da Seven Automation possa tocar, deslizar e digitar no seu aparelho durante o atendimento, este app usa o Serviço de Acessibilidade do Android.',
             '• Só funciona durante uma sessão que você iniciou e aprovou.\n• Não lê suas mensagens, senhas nem coleta dados pessoais.\n• Fica desligado quando não há atendimento.\n• Você pode desativar a qualquer momento nas configurações.',
-            'Sem esta permissão, o técnico só consegue ver sua tela.',
+            'Na próxima tela, ligue a chave "SevenAutomation Suporte Remoto" e volte para o app. Sem isso, o técnico só consegue ver sua tela.',
             'Recusar',
             'Aceitar e continuar',
           ]
@@ -925,7 +925,7 @@ showInputWarnAlert(FFI ffi) {
             'Allow remote control by the technician',
             'So that a Seven Automation technician can tap, swipe and type on your device during support, this app uses Android\'s Accessibility Service.',
             '• It only works during a session that you started and approved.\n• It does not read your messages or passwords, or collect personal data.\n• It is off when no support session is running.\n• You can turn it off at any time in Settings.',
-            'Without this permission, the technician can only view your screen.',
+            'On the next screen, turn on the "SevenAutomation Suporte Remoto" switch and come back to the app. Without it, the technician can only view your screen.',
             'Decline',
             'Accept and continue',
           ];
